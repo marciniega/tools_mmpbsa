@@ -1,0 +1,33 @@
+integrator               = md    ;  leap-frog
+tinit                    = 0
+dt                       = 0.002
+nsteps                   = 25000000 ; 20 ns
+nstcomm                  = 100
+ld_seed                  = -1
+; Output control
+nstxout                  = 0
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 5000
+nstenergy                = 5000
+nstxout-compressed       = 5000
+compressed-x-precision   = 5000
+; Neighborsearching and short-range nonbonded interactions
+nstlist                  = 10
+pbc                      = xyz
+rlist                    = 333.3
+cutoff-scheme            = verlet
+; Electrostatics
+coulombtype              = cut-off
+rcoulomb                 = 333.3
+; van der Waals
+vdw-type                 = cut-off
+rvdw-switch              = 0
+rvdw                     = 333.3
+; Apply long range dispersion corrections for Energy and Pressure
+DispCorr                  = no
+;comm_mode = ANGULAR
+constraints              = h-bonds
+constraint-algorithm     = lincs
+lincs_order              = 4
+lincs_iter               = 3

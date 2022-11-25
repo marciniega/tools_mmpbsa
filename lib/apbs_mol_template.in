@@ -1,0 +1,93 @@
+read
+    mol pqr XXX.pqr
+end
+
+elec name vacc-coarse
+    mg-manual
+    dime   DIME_COAR
+    gcent  CENTERMOL
+    grid   GRID_COAR
+    mol    1
+    lpbe
+    bcfl   mdh
+    ion    1 0.15 0.95
+    ion   -1 0.15 1.81
+    pdie   2
+    sdie   1
+    chgm   spl4
+    srfm   smol
+    srad   1.4
+    swin   0.3
+    sdens  10
+    temp   300
+    calcenergy total
+    calcforce no
+end
+elec name vacc-fine
+    mg-manual 
+    dime   DIME_COAR
+    gcent  CENTERMOL
+    grid   GRID_FINE
+    mol    1
+    lpbe
+    bcfl   focus
+    ion    1 0.15 0.95
+    ion   -1 0.15 1.81
+    pdie   2
+    sdie   1
+    chgm   spl4
+    srfm   smol
+    srad   1.4
+    swin   0.3
+    sdens  10
+    temp   300
+    calcenergy total
+    calcforce no
+end
+
+elec name solv-coarse
+    mg-manual
+    dime   DIME_COAR
+    gcent  CENTERMOL
+    grid   GRID_COAR
+    mol    1
+    lpbe
+    bcfl   mdh
+    ion    1 0.15 0.95
+    ion   -1 0.15 1.81
+    pdie   2
+    sdie   80
+    chgm   spl4
+    srfm   smol
+    srad   1.4
+    swin   0.3
+    sdens  10
+    temp   300
+    calcenergy total
+    calcforce no
+end
+elec name solv-fine
+    mg-manual 
+    dime   DIME_COAR
+    gcent  CENTERMOL
+    grid   GRID_FINE
+    mol    1
+    lpbe
+    bcfl   focus
+    ion    1 0.15 0.95
+    ion   -1 0.15 1.81
+    pdie   2
+    sdie   80
+    chgm   spl4
+    srfm   smol
+    srad   1.4
+    swin   0.3
+    sdens  10
+    temp   300
+    calcenergy total
+    calcforce no
+end
+
+print elecEnergy solv-fine - vacc-fine end
+
+quit
